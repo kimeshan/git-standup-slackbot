@@ -96,21 +96,20 @@ server.start(() => {
 })
 
 async function getCommitsSinceYesterday (user, repo) {
-  let d = new Date()
+  const d = new Date()
   d.setDate(d.getDate() - 1)
   const yesterdayISO = d.toISOString()
 
   try {
-    let response = []
-    let data = await fetch(`https://api.github.com/repos/${user}/${repo}/commits?since=${yesterdayISO}`)
-    let commits = await data.json()
+    const response = []
+    const data = await fetch(`https://api.github.com/repos/${user}/${repo}/commits?since=${yesterdayISO}`)
+    const commits = await data.json()
 
     for (let i of commits) {
       const index = i.commit.message.indexOf('\n\n')
-      let title = i.commit.message.substring(0, index)
-      let text = i.commit.message.substring(index, i.commit.message.length)
-
-      let commit = {
+      const title = i.commit.message.substring(0, index)
+      const text = i.commit.message.substring(index, i.commit.message.length)
+      const commit = {
         author_name: i.commit.committer.name,
         ts: ((new Date(i.commit.committer.date)).getTime() / 1000),
         author_icon: i.committer.avatar_url,
@@ -119,6 +118,7 @@ async function getCommitsSinceYesterday (user, repo) {
         title_link: i.html_url,
         text
       }
+
       response.push(commit)
     }
 
