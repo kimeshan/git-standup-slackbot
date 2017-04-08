@@ -1,0 +1,6 @@
+{
+  "name": "Git Standup Slackbot",
+  "description": "A Slackbot to recall what you or your team did since yesterday.",
+  "repository": "https://github.com/tobiasbueschel/git-standup-slackbot",
+  "keywords": ["git", "standup", "slack", "slackbot", "agile"]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "git-standup-slackbot",
+  "version": "1.0.0",
+  "description": "Slackbot to recall what you did on the last working day... or be nosy and find what someone else did.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "lint": "standard || return 0",
+    "precommit": "npm run lint",
+    "prepush": "npm run lint"
+  },
+  "engines": {
+    "node": ">=7.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tobiasbueschel/git-standup-slackbot.git"
+  },
+  "keywords": [
+    "git-standup",
+    "slack",
+    "slackbot",
+    "standup"
+  ],
+  "author": "tobiasbueschel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tobiasbueschel/git-standup-slackbot/issues"
+  },
+  "homepage": "https://github.com/tobiasbueschel/git-standup-slackbot#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "hapi": "^16.1.1",
+    "hapi-async-handler": "^1.0.3",
+    "husky": "^0.13.3",
+    "inert": "^4.2.0",
+    "node-fetch": "^1.6.3"
+  },
+  "devDependencies": {
+    "standard": "^10.0.1"
+  }
+}
