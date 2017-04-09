@@ -59,7 +59,13 @@ server.route({
           'attachments': data
         }
 
-        reply(response)
+        const noCommits = {
+          'text': `No commits have been made in the ${repo} repository within the last 24h.`,
+          'username': 'Git-Standup',
+          'mrkdwn': false
+        }
+
+        data.length > 0 ? reply(response) : reply(noCommits)
       } catch (error) {
         reply({
           'text': `Usage instruction: /git-standup [username] [repository]`,
