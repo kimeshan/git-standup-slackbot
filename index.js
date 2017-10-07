@@ -10,6 +10,7 @@ const server = new Hapi.Server({
     routes: { files: { relativeTo: Path.join(__dirname, 'public') } }
   }
 })
+
 server.connection({
   host: '0.0.0.0',
   port: process.env.PORT || 8080
@@ -31,7 +32,7 @@ server.route({
       const response = await data.json()
       if (response.ok === 'True') {
         console.error('Error')
-        reply('Error encountered: \n' + JSON.stringify(response)).status(200).end()
+        reply(`Error encountered: \n ${JSON.stringify(response)}`).status(200).end()
       } else {
         reply.file('success.html')
       }
@@ -98,7 +99,7 @@ server.route({
 })
 
 server.start(() => {
-  console.log('Server running at:', server.info.uri)
+  console.info(`Server running at: ${server.info.uri}`)
 })
 
 async function getCommitsSinceYesterday (user, repo) {
