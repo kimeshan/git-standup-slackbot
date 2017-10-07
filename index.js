@@ -98,6 +98,14 @@ server.route({
   }
 })
 
+server.route({
+  method: 'GET',
+  path: '/{any*}',
+  handler: {
+    file: '404.html'
+  }
+})
+
 server.start(() => {
   console.info(`Server running at: ${server.info.uri}`)
 })
