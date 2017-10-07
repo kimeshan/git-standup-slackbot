@@ -7,7 +7,11 @@ require('dotenv').config()
 // Create a server with a host and port
 const server = new Hapi.Server({
   connections: {
-    routes: { files: { relativeTo: Path.join(__dirname, 'public') } }
+    routes: {
+      files: {
+        relativeTo: Path.join(__dirname, 'public')
+      }
+    }
   }
 })
 
@@ -16,7 +20,20 @@ server.connection({
   port: process.env.PORT || 8080
 })
 
-server.register(Inert, () => {})
+server.register(Inert)
+
+server.route({
+  method: 'GET',
+  path: '/{param*}',
+  handler: {
+    directory: {
+      path: '.',
+      listing: true,
+      redirectToSlash: true,
+      index: true
+    }
+  }
+})
 
 server.route({
   method: 'GET',
@@ -79,30 +96,6 @@ server.route({
         'username': 'Git-Standup'
       })
     }
-  }
-})
-
-server.route({
-  method: 'GET',
-  path: '/',
-  handler: {
-    file: 'landing.html'
-  }
-})
-
-server.route({
-  method: 'GET',
-  path: '/privacy',
-  handler: {
-    file: 'privacy.html'
-  }
-})
-
-server.route({
-  method: 'GET',
-  path: '/{any*}',
-  handler: {
-    file: '404.html'
   }
 })
 
