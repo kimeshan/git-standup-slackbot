@@ -11,7 +11,7 @@
     "prepush": "npm run lint"
   },
   "engines": {
-    "node": ">=7.8.0"
+    "node": ">=8.5.0"
   },
   "repository": {
     "type": "git",
