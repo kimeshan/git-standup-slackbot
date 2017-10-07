@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
+    "dev": "nodemon -e js,html --watch . index.js",
     "lint": "standard || return 0",
     "precommit": "npm run lint",
     "prepush": "npm run lint"
@@ -38,6 +39,7 @@
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
+    "nodemon": "^1.12.1",
     "standard": "^10.0.3"
   }
 }
